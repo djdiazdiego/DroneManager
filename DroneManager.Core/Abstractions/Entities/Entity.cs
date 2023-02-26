@@ -8,7 +8,7 @@ namespace DroneManager.Core.Abstractions.Entities
     {
         private int? _requestedHashCode;
         private DateTimeOffset _created;
-        private DateTimeOffset _lastModified;
+        private DateTimeOffset? _lastModified;
 
         protected Entity()
         {

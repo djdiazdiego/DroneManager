@@ -19,7 +19,7 @@ namespace DroneManager.Core.Wrappers
         /// </summary>
         /// <param name="data"></param>
         /// <param name="message"></param>
-        public Response(T data, string message = null)
+        public Response(T data, string message)
         {
             Code = 200;
             Succeeded = true;

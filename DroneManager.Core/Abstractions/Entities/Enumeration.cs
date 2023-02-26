@@ -35,7 +35,7 @@ namespace DroneManager.Core.Abstractions.Entities
 
         /// <inheritdoc />
         public override bool Equals(object obj) =>
-            obj is Enumeration<TKey, TUserKey> otherValue && GetType().Equals(obj.GetType()) && Id.Equals(otherValue.Id);
+            obj is Enumeration<TKey> otherValue && GetType().Equals(obj.GetType()) && Id.Equals(otherValue.Id);
 
 
         /// <inheritdoc />
@@ -46,6 +46,6 @@ namespace DroneManager.Core.Abstractions.Entities
         public override string ToString() => Name;
 
         /// <inheritdoc />
-        public int CompareTo(object other) => Id.CompareTo(((Enumeration<TKey, TUserKey>)other).Id);
+        public int CompareTo(object other) => Id.CompareTo(((Enumeration<TKey>)other).Id);
     }
 }

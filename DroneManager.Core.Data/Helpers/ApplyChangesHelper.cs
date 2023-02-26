@@ -3,7 +3,10 @@ using DroneManager.Core.Data.Repositories;
 using DroneManager.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Polly;
+using System;
+using System.Reflection;
 
 namespace DroneManager.Helpers
 {
@@ -30,10 +33,11 @@ namespace DroneManager.Helpers
         private static async Task ApplyPenndingMigrationAsync<TContext>(this IServiceProvider provider, CancellationToken cancellationToken) where TContext : DbContext
         {
             using var scope = provider.CreateScope();
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger>();
 
             if (scope.ServiceProvider.GetRequiredService<TContext>() is TContext context && context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
             {
-                await ApplyMigrationAsync(context, cancellationToken);
+                await ApplyMigrationAsync(context, logger, cancellationToken);
             };
 
             //if (scope.ServiceProvider.GetRequiredService<IdentityContext>() is IdentityContext identityContext && identityContext.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
@@ -48,12 +52,18 @@ namespace DroneManager.Helpers
         /// <param name="context"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        private static Task ApplyMigrationAsync(DbContext context, CancellationToken cancellationToken) =>
+        private static Task ApplyMigrationAsync(DbContext context, ILogger logger, CancellationToken cancellationToken) =>
             AsyncRetrySyntax.WaitAndRetryAsync(
                 Policy.Handle<Exception>(),
                 5,
                 retryAttempt => TimeSpan.FromSeconds(Math.Pow(2.0, retryAttempt)),
-                (ex, time) => { })
+                (ex, time) => {
+
+                    var exceptions = ex.GetAllMessages();
+                    var message = String.Join(". ", exceptions);
+
+                    logger.LogWarning(message);
+                })
                 .ExecuteAsync(async () => await RelationalDatabaseFacadeExtensions.MigrateAsync(context.Database, cancellationToken));
 
         /// <summary>
@@ -77,7 +87,8 @@ namespace DroneManager.Helpers
         /// <returns></returns>
         private static async Task ApplyApplicationSeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
         {
-            var seedTypes = typeof(ISeed).GetConcreteTypes(typeof(Repository<>).Assembly);
+            var seedAssembly = Assembly.Load("DroneManager.Infrastructure");
+            var seedTypes = typeof(ISeed).GetConcreteTypes(seedAssembly);
 
             var tasks = (from seedType in seedTypes
                          let entityType = seedType.BaseType?.GenericTypeArguments

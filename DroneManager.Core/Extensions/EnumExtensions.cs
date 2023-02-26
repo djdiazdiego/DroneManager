@@ -9,7 +9,7 @@ namespace DroneManager.Core.Extensions
         public static TAttribute? GetAttributeOfType<TAttribute>(this Enum value) where TAttribute : Attribute
         {
             var enumType = value.GetType();
-            if (enumType.IsEnum)
+            if (!enumType.IsEnum)
                 throw new ArgumentException("The specified type is not an Enum.");
 
             var name = Enum.GetName(enumType, value);

@@ -6,6 +6,9 @@ using DroneManager.Infrastructure.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.AddApplicationLayerServices();
 builder.AddWebServices();
