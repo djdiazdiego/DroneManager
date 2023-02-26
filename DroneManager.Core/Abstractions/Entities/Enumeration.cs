@@ -7,7 +7,7 @@ namespace DroneManager.Core.Abstractions.Entities
     /// 
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
-    public abstract class Enumeration<TKey, TUserKey> : Entity<TKey>, IEnumeration, INotRepository
+    public abstract class Enumeration<TKey> : Entity<TKey>, IEnumeration, INotRepository
         where TKey : Enum
     {
         private string _name;

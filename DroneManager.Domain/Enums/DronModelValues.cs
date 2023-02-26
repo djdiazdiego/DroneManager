@@ -1,6 +1,6 @@
 ﻿namespace DroneManager.Domain.Enums
 {
-    public enum Model
+    public enum DronModelValues
     {
         Lightweigh = 1,
         Middleweight = 2,
