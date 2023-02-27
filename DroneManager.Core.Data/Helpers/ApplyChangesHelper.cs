@@ -39,11 +39,6 @@ namespace DroneManager.Core.Data.Helpers
             {
                 await ApplyMigrationAsync(context, logger, cancellationToken);
             };
-
-            //if (scope.ServiceProvider.GetRequiredService<IdentityContext>() is IdentityContext identityContext && identityContext.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
-            //{
-            //    await ApplyMigrationAsync(identityContext, cancellationToken);
-            //}
         }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace DroneManager.Core.Data.Helpers
         /// <returns></returns>
         private static async Task ApplySeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
         {
-            //await provider.ApplyIdentitySeedAsync();
             await ApplyApplicationSeedsAsync(provider, cancellationToken);
         }
 
@@ -103,21 +97,5 @@ namespace DroneManager.Core.Data.Helpers
                 await task;
             }
         }
-
-        ///// <summary>
-        ///// Identity seeds
-        ///// </summary>
-        ///// <param name="provider"></param>
-        ///// <returns></returns>
-        //private static async Task ApplyIdentitySeedAsync(this IServiceProvider provider)
-        //{
-        //    using var scope = provider.CreateScope();
-
-        //    using var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
-        //    using var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-
-        //    await DefaultRoles.SeedAsync(roleManager)
-        //        .ContinueWith(async task => await DefaultSuperAdmin.SeedAsync(userManager, roleManager));
-        //}
     }
 }

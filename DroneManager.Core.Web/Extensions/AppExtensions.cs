@@ -28,8 +28,5 @@ namespace DroneManager.Core.Web.Extensions
         public static void UseErrorHandlingMiddleware(this IApplicationBuilder app) =>
             app.UseMiddleware<ErrorHandlerMiddleware>();
 
-        //public static void UseJwtMiddleware(this IApplicationBuiSlder app)
-        //    => app.UseMiddleware<JwtMiddleware>();
-
     }
 }

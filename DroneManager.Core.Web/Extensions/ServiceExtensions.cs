@@ -50,32 +50,6 @@ namespace DroneManager.Core.Web.Extensions
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
 
-                //options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey,
-                //    Scheme = "Bearer",
-                //    BearerFormat = "JWT",
-                //    Description = "Input your Bearer token in this format - Bearer {your token here} to access this API",
-                //});
-                //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer",
-                //            },
-                //            Scheme = "Bearer",
-                //            Name = "Bearer",
-                //            In = ParameterLocation.Header,
-                //        }, new List<string>()
-                //    },
-                //});
-
                 options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
             services.AddSwaggerGenNewtonsoftSupport();
@@ -89,11 +63,8 @@ namespace DroneManager.Core.Web.Extensions
         {
             services.AddApiVersioning(config =>
             {
-                // Specify the default API Version as 1.0
                 config.DefaultApiVersion = new ApiVersion(1, 0);
-                // If the client hasn't specified the API version in the request, use the default API version number 
                 config.AssumeDefaultVersionWhenUnspecified = true;
-                // Advertise the API versions supported for the particular endpoint
                 config.ReportApiVersions = true;
             });
 
@@ -116,20 +87,5 @@ namespace DroneManager.Core.Web.Extensions
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
         }
-
-        ///// <summary>
-        ///// Register authentication
-        ///// </summary>
-        ///// <param name="services"></param>
-        ///// <param name="configuration"></param>
-        //public static void AddAuthenticationExtension(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    services.AddAuthentication(x =>
-        //    {
-        //        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        //        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        //    }).AddJwtBearer();
-        //}
-
     }
 }

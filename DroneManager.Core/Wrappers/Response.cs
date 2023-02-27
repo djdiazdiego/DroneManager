@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DroneManager.Core.Wrappers
 {
@@ -19,7 +20,7 @@ namespace DroneManager.Core.Wrappers
         /// </summary>
         /// <param name="data"></param>
         /// <param name="message"></param>
-        public Response(T data, string message)
+        public Response(T data, string message = null)
         {
             Code = 200;
             Succeeded = true;
