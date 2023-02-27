@@ -14,7 +14,12 @@ namespace DroneManager.Application.Commands
                 .MustAsync((id, cancellationToken) =>
                 {
                     return queryRepository.GetQuery().AnyAsync(p => p.Id == id, cancellationToken);
-                }).WithMessage("Drone not found");
+                }).WithMessage("Drone not found")
+                 .MustAsync((id, cancellationToken) =>
+                 {
+                     return queryRepository.GetQuery()
+                        .AnyAsync(p => p.Id == id && p.BatteryCapacity > 25, cancellationToken);
+                 }).WithMessage("battery less than or equal to 25%");
 
             RuleFor(p => p)
               .MustAsync(async (command, cancellationToken) =>
@@ -34,6 +39,7 @@ namespace DroneManager.Application.Commands
                   return droneWeight.weight < (droneWeight.medicineWeight + newWeight);
               }).WithMessage("the weight of the Medicines exceeds the load of the Drone")
               .OverridePropertyName(nameof(Drone));
+
         }
     }
 }
