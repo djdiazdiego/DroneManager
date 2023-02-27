@@ -53,10 +53,11 @@ namespace DroneManager.Application
 
         private static Assembly[] LoadMapperAssemblies()
         {
+            var core = Assembly.Load("DroneManager.Core");
             var domain = Assembly.Load("DroneManager.Domain");
             var application = Assembly.Load("DroneManager.Application");
 
-            return new Assembly[] {domain, application};
+            return new Assembly[] { core, domain, application };
         }
 
         ///// <summary>
