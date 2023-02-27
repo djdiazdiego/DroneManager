@@ -9,7 +9,9 @@ namespace DroneManager.Core.Mappers
         public StorageFileDataProfile()
         {
             CreateMap<StorageFileData, StorageFileDataDTO>()
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.LastModified, opt => opt.Ignore());
         }
     }
 }

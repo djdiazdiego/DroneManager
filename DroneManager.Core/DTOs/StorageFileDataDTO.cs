@@ -12,7 +12,5 @@ namespace DroneManager.Core.DTOs
         public long Size { get; set; }
         public string Extension { get; set; }
         public bool IsImage { get; set; }
-        public DateTimeOffset Created { get; set; }
-        public DateTimeOffset? LastModified { get; set; }
     }
 }

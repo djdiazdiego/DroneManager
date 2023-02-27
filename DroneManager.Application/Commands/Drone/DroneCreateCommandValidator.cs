@@ -22,6 +22,7 @@ namespace DroneManager.Application.Commands
 
             RuleFor(p => p.Weight)
                 .NotNull()
+                .GreaterThanOrEqualTo(0)
                 .LessThanOrEqualTo(500);
 
             RuleFor(p => p.BatteryCapacity)
