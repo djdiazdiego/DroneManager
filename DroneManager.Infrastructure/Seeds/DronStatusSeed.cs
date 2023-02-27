@@ -4,7 +4,7 @@ using DroneManager.Infrastructure.Contexts;
 
 namespace DroneManager.Infrastructure.Seeds
 {
-    public sealed class DronModelSeed : EnumerationSeed<DronModel, DbContextWrite>
+    public sealed class DronModelSeed : EnumerationSeed<DroneModel, DbContextWrite>
     {
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DroneManager.Infrastructure.Configurations
 {
-    public class DronConfiguration : BaseEntityConfiguration<Dron>
+    public class DroneConfiguration : BaseEntityConfiguration<Drone>
     {
-        public override void Configure(EntityTypeBuilder<Dron> builder)
+        public override void Configure(EntityTypeBuilder<Drone> builder)
         {
             base.Configure(builder);
 

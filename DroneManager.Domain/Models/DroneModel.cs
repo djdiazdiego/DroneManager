@@ -4,15 +4,15 @@ using DroneManager.Domain.Enums;
 
 namespace DroneManager.Domain.Models
 {
-    public class DronStatus : Enumeration<DronStatusValues>, INotRepository
+    public class DroneModel : Enumeration<DroneModelValues>, INotRepository
     {
-        protected DronStatus() { }
+        protected DroneModel() { }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="PeripheralDeviceStatusId"></param>
         /// <param name="name"></param>
-        public DronStatus(DronStatusValues PeripheralDeviceStatusId, string name) : base(PeripheralDeviceStatusId, name) { }
+        public DroneModel(DroneModelValues PeripheralDeviceStatusId, string name) : base(PeripheralDeviceStatusId, name) { }
     }
 }

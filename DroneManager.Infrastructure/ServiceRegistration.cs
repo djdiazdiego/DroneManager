@@ -40,8 +40,7 @@ namespace DroneManager.Infrastructure
         /// <param name="services"></param>
         public static void AddRepositories(this IServiceCollection services)
         {
-            var assembly = Assembly.Load("DroneManager.Domain");
-            var types = typeof(IEntity).GetConcreteTypes(assembly);
+            var types = typeof(IEntity).GetConcreteTypes(LoadRepositoryAssemblies());
 
             foreach (var type in types)
             {
@@ -51,6 +50,14 @@ namespace DroneManager.Infrastructure
                 }
                 CreateRepositories(services, type, typeof(IQueryRepository<>), typeof(QueryRepository<>), typeof(DbContextRead));
             }
+        }
+
+        private static Assembly[] LoadRepositoryAssemblies()
+        {
+            var core = Assembly.Load("DroneManager.Core");
+            var domain = Assembly.Load("DroneManager.Domain");
+
+            return new Assembly[] { core, domain };
         }
 
         /// <summary>

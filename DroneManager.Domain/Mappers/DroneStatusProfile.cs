@@ -4,11 +4,11 @@ using DroneManager.Domain.Models;
 
 namespace DroneManager.Domain.Mappers
 {
-    public class DronStatusProfile : Profile
+    public class DroneStatusProfile : Profile
     {
-        public DronStatusProfile()
+        public DroneStatusProfile()
         {
-            CreateMap<DronStatus, EnumerationDTO>()
+            CreateMap<DroneStatus, EnumerationDTO>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Id.GetHashCode()));
         }
     }

@@ -2,7 +2,7 @@
 
 namespace DroneManager.Domain.Enums
 {
-    public enum DronStatusValues
+    public enum DroneStatusValues
     {
         IDLE = 1,
         CHARGING = 2,

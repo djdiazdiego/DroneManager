@@ -1,13 +1,10 @@
 using DroneManager.Application;
+using DroneManager.Core.Data.Helpers;
 using DroneManager.Core.Web.Extensions;
-using DroneManager.Helpers;
 using DroneManager.Infrastructure;
 using DroneManager.Infrastructure.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.AddApplicationLayerServices();

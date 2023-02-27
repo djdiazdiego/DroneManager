@@ -48,7 +48,7 @@ namespace DroneManager.Application
         private static void AddProjectServices(this IServiceCollection services)
         {
             services.AddSingleton<ISqlGuidGenerator, SequentialGuidGeneratorService>();
-            services.AddSingleton<IFileStorageService, FileStorageService>();
+            services.AddTransient<IFileStorageService, FileStorageService>();
         }
 
         private static Assembly[] LoadMapperAssemblies()

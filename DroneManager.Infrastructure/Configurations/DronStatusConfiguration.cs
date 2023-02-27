@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DroneManager.Infrastructure.Configurations
 {
-    public class DronStatusConfiguration : BaseEnumerationConfiguration<DronStatus>
+    public class DronStatusConfiguration : BaseEnumerationConfiguration<DroneStatus>
     {
-        public override void Configure(EntityTypeBuilder<DronStatus> builder)
+        public override void Configure(EntityTypeBuilder<DroneStatus> builder)
         {
             base.Configure(builder);
 

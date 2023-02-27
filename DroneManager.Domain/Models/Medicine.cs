@@ -9,7 +9,9 @@ namespace DroneManager.Domain.Models
         public double Weight { get; set; }
         public string Code { get; set; }
         public int? StorageFileDataId { get; set; }
+        public int? DroneId { get; set; }
 
         public StorageFileData StorageFileData { get; set; }
+        public Drone Drone { get; set; }
     }
 }
