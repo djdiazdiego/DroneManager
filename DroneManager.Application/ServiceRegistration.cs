@@ -1,6 +1,8 @@
 ﻿using DroneManager.Core.Abstractions.Persistence;
 using DroneManager.Core.Behaviours;
 using DroneManager.Core.Data.Contexts;
+using DroneManager.Core.Services;
+using DroneManager.FileStorage;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -38,9 +40,23 @@ namespace DroneManager.Application
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             builder.Services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<DbContextWriteBase>());
 
-            //services.AddMapperExtension(new Assembly[] {
-            //    Assembly.GetExecutingAssembly()
-            //});
+            builder.Services.AddAutoMapper(LoadMapperAssemblies());
+
+            builder.Services.AddProjectServices();
+        }
+
+        private static void AddProjectServices(this IServiceCollection services)
+        {
+            services.AddSingleton<ISqlGuidGenerator, SequentialGuidGeneratorService>();
+            services.AddSingleton<IFileStorageService, FileStorageService>();
+        }
+
+        private static Assembly[] LoadMapperAssemblies()
+        {
+            var domain = Assembly.Load("DroneManager.Domain");
+            var application = Assembly.Load("DroneManager.Application");
+
+            return new Assembly[] {domain, application};
         }
 
         ///// <summary>

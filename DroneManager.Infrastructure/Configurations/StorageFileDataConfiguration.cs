@@ -1,7 +1,5 @@
 ﻿using DroneManager.Core.Data.Configurations;
 using DroneManager.Core.Models;
-using DroneManager.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DroneManager.Infrastructure.Configurations

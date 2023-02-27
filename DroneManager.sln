@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{2DCC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Domain", "DroneManager.Domain\DroneManager.Domain.csproj", "{8735DC58-A2D5-4F72-AA12-3417D51EDA7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.Core.Web", "DroneManager.Core.Web\DroneManager.Core.Web.csproj", "{A5F83313-5A63-4057-8A10-88CDD3401352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Core.Web", "DroneManager.Core.Web\DroneManager.Core.Web.csproj", "{A5F83313-5A63-4057-8A10-88CDD3401352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.Application", "DroneManager.Application\DroneManager.Application.csproj", "{F82B6939-D0EC-4940-8037-5635C590EB75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Application", "DroneManager.Application\DroneManager.Application.csproj", "{F82B6939-D0EC-4940-8037-5635C590EB75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.Infrastructure", "DroneManager.Infrastructure\DroneManager.Infrastructure.csproj", "{16BC362A-FB46-4E0D-B15D-7139573C6575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Infrastructure", "DroneManager.Infrastructure\DroneManager.Infrastructure.csproj", "{16BC362A-FB46-4E0D-B15D-7139573C6575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.Server", "DroneManager.Server\DroneManager.Server.csproj", "{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Server", "DroneManager.Server\DroneManager.Server.csproj", "{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.FileStorage", "DroneManager.FileStorage\DroneManager.FileStorage.csproj", "{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{F82B6939-D0EC-4940-8037-5635C590EB75} = {2DCCE12E-49F8-4B57-A9C9-FE51EACADE81}
 		{16BC362A-FB46-4E0D-B15D-7139573C6575} = {2DCCE12E-49F8-4B57-A9C9-FE51EACADE81}
 		{F894C667-A6AB-4CC1-A525-6A4B129C1CD5} = {2DCCE12E-49F8-4B57-A9C9-FE51EACADE81}
+		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4} = {FB34A065-302D-4A80-8759-581E75AF7D17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30DC8D64-D74C-4652-8B90-93073FE5F7E4}

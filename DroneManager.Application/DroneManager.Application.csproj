@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DroneManager.Core.Web\DroneManager.Core.Web.csproj" />
     <ProjectReference Include="..\DroneManager.Infrastructure\DroneManager.Infrastructure.csproj" />
   </ItemGroup>
