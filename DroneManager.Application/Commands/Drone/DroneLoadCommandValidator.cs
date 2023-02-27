@@ -15,6 +15,25 @@ namespace DroneManager.Application.Commands
                 {
                     return queryRepository.GetQuery().AnyAsync(p => p.Id == id, cancellationToken);
                 }).WithMessage("Drone not found");
+
+            RuleFor(p => p)
+              .MustAsync(async (command, cancellationToken) =>
+              {
+                  var droneWeight = await queryRepository.GetQuery()
+                    .Include(p => p.Medicines)
+                    .Select(p => new
+                    {
+                        weight = p.Weight,
+                        medicineWeight = p.Medicines.Any() ? p.Medicines.Sum(x => x.Weight) : 0
+                    }).FirstOrDefaultAsync(cancellationToken);
+
+                  var newWeight = await medicineQueryRepository.GetQuery()
+                    .Where(p => command.MedicineIds.Contains(p.Id))
+                    .SumAsync(p => p.Weight, cancellationToken);
+
+                  return droneWeight.weight < (droneWeight.medicineWeight + newWeight);
+              }).WithMessage("the weight of the Medicines exceeds the load of the Drone")
+              .OverridePropertyName(nameof(Drone));
         }
     }
 }
