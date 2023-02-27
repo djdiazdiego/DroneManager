@@ -14,7 +14,11 @@ namespace DroneManager.Domain.Mappers
                 .ForMember(x => x.ModelName, opt => opt.MapFrom(x => x.Model != null ? x.Model.Name : x.ModelId.ToEnumValueString()))
                 .ReverseMap()
                 .ForMember(x => x.Model, opt => opt.Ignore())
-                .ForMember(x => x.Status, opt => opt.Ignore());
+                .ForMember(x => x.Status, opt => opt.Ignore())
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.LastModified, opt => opt.Ignore());
+
+            CreateMap<Drone, DroneBatteryDTO>();
         }
     }
 }

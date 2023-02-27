@@ -2,9 +2,9 @@
 
 namespace DroneManager.Domain.DTOs
 {
-    public class EnumerationDTO : IDTO<int>
+    public class DroneBatteryDTO : IDTO<int>
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public decimal BatteryCapacity { get; set; }
     }
 }

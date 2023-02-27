@@ -1,11 +1,10 @@
-﻿using DroneManager.Application.Commands;
-using DroneManager.Core.Abstractions.Persistence;
+﻿using DroneManager.Core.Abstractions.Persistence;
 using DroneManager.Core.Abstractions.Validators;
 using DroneManager.Domain.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace roneManager.Application.Commands
+namespace DroneManager.Application.Commands
 {
     public sealed class DroneUpdateCommandValidator : BaseValidator<DroneUpdateCommand>
     {

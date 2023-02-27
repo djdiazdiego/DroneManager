@@ -3,9 +3,8 @@ using DroneManager.Core.Wrappers;
 
 namespace DroneManager.Core.Abstractions.Commands
 {
-
     /// <summary>
-    /// Command with entity identifier
+    /// 
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
     /// <typeparam name="TKey"></typeparam>

@@ -1,6 +1,5 @@
 ﻿using DroneManager.Core.Abstractions.Dtos;
 using DroneManager.Domain.Enums;
-using System;
 
 namespace DroneManager.Domain.DTOs
 {
@@ -14,7 +13,5 @@ namespace DroneManager.Domain.DTOs
         public decimal BatteryCapacity { get; set; }
         public DroneStatusValues StatusId { get; set; }
         public string? StatusName { get; set; }
-        public DateTimeOffset Created { get; set; }
-        public DateTimeOffset? LastModified { get; set; }
     }
 }

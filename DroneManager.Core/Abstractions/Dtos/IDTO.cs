@@ -2,12 +2,13 @@
 
 namespace DroneManager.Core.Abstractions.Dtos
 {
-    public interface IDTO<TKey>
+    public interface IDTO
+    {
+        
+    }
+
+    public interface IDTO<TKey> : IDTO
     {
         public TKey Id { get; set; }
-
-        public DateTimeOffset Created { get; set; }
-
-        public DateTimeOffset? LastModified { get; set; }
     }
 }

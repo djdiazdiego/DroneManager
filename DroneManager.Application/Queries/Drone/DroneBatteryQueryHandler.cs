@@ -1,0 +1,36 @@
+﻿using AutoMapper;
+using DroneManager.Core.Abstractions.Persistence;
+using DroneManager.Core.Abstractions.Queries;
+using DroneManager.Core.Wrappers;
+using DroneManager.Domain.DTOs;
+using DroneManager.Domain.Models;
+
+namespace DroneManager.Application.Queries
+{
+    public sealed class DroneBatteryQueryHandler : IQueryHandler<DroneBatteryQuery, Response<DroneBatteryDTO>>
+    {
+        private readonly IQueryRepository<Drone> _droneRepository;
+        private readonly IMapper _mapper;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="droneRepository"></param>
+        /// <param name="mapper"></param>
+        public DroneBatteryQueryHandler(
+            IQueryRepository<Drone> droneRepository,
+            IMapper mapper)
+        {
+            _droneRepository = droneRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<Response<DroneBatteryDTO>> Handle(DroneBatteryQuery request, CancellationToken cancellationToken)
+        {
+            var drone = await _droneRepository.FindAsync(new object[] { request.Id }, cancellationToken);
+            var response = _mapper.Map<DroneBatteryDTO>(drone);
+
+            return new Response<DroneBatteryDTO>(response);
+        }
+    }
+}
