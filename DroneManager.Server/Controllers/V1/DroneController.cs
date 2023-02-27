@@ -32,7 +32,6 @@ namespace DroneManager.Server.Controllers.V1
         /// <returns></returns>
         [HttpGet, Route("all")]
         [ProducesResponseType(typeof(Response<IEnumerable<DroneDTO>>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ValidationResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             var query = new DroneGetAllQuery();
