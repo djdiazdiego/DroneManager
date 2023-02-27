@@ -9,6 +9,7 @@ namespace DroneManager.Core.Abstractions.Validators
         protected BaseValidator()
         {
             RuleLevelCascadeMode = CascadeMode.Stop;
+            ClassLevelCascadeMode = CascadeMode.Stop;
         }
     }
 }

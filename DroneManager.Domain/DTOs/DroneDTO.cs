@@ -9,11 +9,11 @@ namespace DroneManager.Domain.DTOs
         public int Id { get; set; }
         public string SerialNumber { get; set; }
         public DroneModelValues ModelId { get; set; }
-        public string ModelName { get; set; }
+        public string? ModelName { get; set; }
         public double Weight { get; set; }
         public decimal BatteryCapacity { get; set; }
         public DroneStatusValues StatusId { get; set; }
-        public string StatusName { get; set; }
+        public string? StatusName { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? LastModified { get; set; }
     }
