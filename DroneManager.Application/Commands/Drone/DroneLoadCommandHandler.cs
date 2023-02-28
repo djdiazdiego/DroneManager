@@ -37,12 +37,12 @@ namespace DroneManager.Application.Commands
         public async Task<Response<DroneLoadDTO>> Handle(DroneLoadCommand request, CancellationToken cancellationToken)
         {
             var medicines = await _medicineRepository.GetQuery()
-                .Where(p => request.MedicineIds.Contains(p.Id))
+                .Where(p => request.MedicineIds.Contains(p.Id) && p.DroneId != request.Id)
                 .ToArrayAsync(cancellationToken);
 
             foreach (var medicine in medicines)
             {
-                medicine.DroneId = medicine.Id;
+                medicine.DroneId = request.Id;
             }
 
             _medicineRepository.UpdateRange(medicines);

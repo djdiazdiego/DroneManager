@@ -19,7 +19,23 @@ namespace DroneManager.Application.Commands
                  {
                      return queryRepository.GetQuery()
                         .AnyAsync(p => p.Id == id && p.BatteryCapacity > 25, cancellationToken);
-                 }).WithMessage("battery less than or equal to 25%");
+                 }).WithMessage("Battery less than or equal to 25%");
+
+            RuleFor(p => p)
+              .MustAsync(async (command, cancellationToken) =>
+              {
+                  foreach (var id in command.MedicineIds)
+                  {
+                      var isInAnotherDrone = await medicineQueryRepository.GetQuery()
+                        .AnyAsync(p => p.DroneId != null && p.DroneId != default && p.DroneId != command.Id, cancellationToken);
+
+                      if (isInAnotherDrone)
+                          return false;
+                  }
+
+                  return true;
+              }).WithMessage("Some of the medicines are already in another Drone")
+              .OverridePropertyName(nameof(Drone));
 
             RuleFor(p => p)
               .MustAsync(async (command, cancellationToken) =>
@@ -37,7 +53,7 @@ namespace DroneManager.Application.Commands
                     .SumAsync(p => p.Weight, cancellationToken);
 
                   return droneWeight.weight < (droneWeight.medicineWeight + newWeight);
-              }).WithMessage("the weight of the Medicines exceeds the load of the Drone")
+              }).WithMessage("The weight of the Medicines exceeds the load of the Drone")
               .OverridePropertyName(nameof(Drone));
 
         }
