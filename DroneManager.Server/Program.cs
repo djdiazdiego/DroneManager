@@ -7,8 +7,8 @@ using DroneManager.Infrastructure.Contexts;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.AddApplicationLayerServices();
-builder.AddWebServices();
+builder.Services.AddApplicationLayerServices();
+builder.Services.AddWebServices();
 
 // Add middlewares
 

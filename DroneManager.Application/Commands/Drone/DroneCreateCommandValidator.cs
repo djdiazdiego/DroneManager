@@ -21,12 +21,10 @@ namespace DroneManager.Application.Commands
                 .MaximumLength(100);
 
             RuleFor(p => p.Weight)
-                .NotNull()
                 .GreaterThanOrEqualTo(0)
                 .LessThanOrEqualTo(500);
 
             RuleFor(p => p.BatteryCapacity)
-                .NotNull()
                 .GreaterThanOrEqualTo(0)
                 .LessThanOrEqualTo(100);
         }

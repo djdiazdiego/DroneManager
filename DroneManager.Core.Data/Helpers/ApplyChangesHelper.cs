@@ -47,7 +47,7 @@ namespace DroneManager.Core.Data.Helpers
         /// <param name="context"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        private static Task ApplyMigrationAsync(DbContext context, ILogger logger, CancellationToken cancellationToken) =>
+        public static Task ApplyMigrationAsync(DbContext context, ILogger logger, CancellationToken cancellationToken) =>
             AsyncRetrySyntax.WaitAndRetryAsync(
                 Policy.Handle<Exception>(),
                 5,
@@ -64,7 +64,7 @@ namespace DroneManager.Core.Data.Helpers
         /// <param name="provider"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        private static async Task ApplySeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
+        public static async Task ApplySeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
         {
             await ApplyApplicationSeedsAsync(provider, cancellationToken);
         }
@@ -76,7 +76,7 @@ namespace DroneManager.Core.Data.Helpers
         /// <param name="provider"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        private static async Task ApplyApplicationSeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
+        public static async Task ApplyApplicationSeedsAsync(this IServiceProvider provider, CancellationToken cancellationToken)
         {
             var seedAssembly = Assembly.Load("DroneManager.Infrastructure");
             var seedTypes = typeof(ISeed).GetConcreteTypes(seedAssembly);

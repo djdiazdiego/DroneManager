@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.Server", "DroneManager.Server\DroneManager.Server.csproj", "{F894C667-A6AB-4CC1-A525-6A4B129C1CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.FileStorage", "DroneManager.FileStorage\DroneManager.FileStorage.csproj", "{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneManager.FileStorage", "DroneManager.FileStorage\DroneManager.FileStorage.csproj", "{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{62030ECF-C321-4C03-B4DA-19209DBAFC29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneManager.Test", "DroneManager.Test\DroneManager.Test.csproj", "{EF5A4AE9-472F-430E-8642-7FCA7609F44F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF5A4AE9-472F-430E-8642-7FCA7609F44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5A4AE9-472F-430E-8642-7FCA7609F44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5A4AE9-472F-430E-8642-7FCA7609F44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5A4AE9-472F-430E-8642-7FCA7609F44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,7 @@ Global
 		{16BC362A-FB46-4E0D-B15D-7139573C6575} = {2DCCE12E-49F8-4B57-A9C9-FE51EACADE81}
 		{F894C667-A6AB-4CC1-A525-6A4B129C1CD5} = {2DCCE12E-49F8-4B57-A9C9-FE51EACADE81}
 		{2BD0A9C9-956E-47EC-9093-DDB0EFDE7AE4} = {FB34A065-302D-4A80-8759-581E75AF7D17}
+		{EF5A4AE9-472F-430E-8642-7FCA7609F44F} = {62030ECF-C321-4C03-B4DA-19209DBAFC29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30DC8D64-D74C-4652-8B90-93073FE5F7E4}

@@ -17,10 +17,9 @@ namespace DroneManager.Application.Commands
                 .Must((name) =>
                 {
                     return Regex.IsMatch(name, @"^[a-zA-Z0-9_-]+$");
-                }).WithMessage("allowed only letters, numbers, '-' and '_'");
+                }).WithMessage("Allowed only letters, numbers, '-' and '_'");
 
             RuleFor(p => p.Weight)
-                .NotNull()
                 .GreaterThanOrEqualTo(0);
 
             RuleFor(p => p.Code)
@@ -29,7 +28,7 @@ namespace DroneManager.Application.Commands
                 .Must((code) =>
                 {
                     return Regex.IsMatch(code, @"^[A-Z0-9_]+$");
-                }).WithMessage("allowed only capital letters, numbers and '_'")
+                }).WithMessage("Allowed only capital letters, numbers and '_'")
                 .MustAsync((code, cancellationToken) =>
                 {
                     return queryRepository.GetQuery().AllAsync(p => p.Code != code, cancellationToken);

@@ -10,7 +10,7 @@ namespace DroneManager.Core.Data.Contexts
     /// <summary>
     /// 
     /// </summary>
-    public abstract class DbContextWriteBase : DbContext, IUnitOfWork
+    public abstract class DbContextWriteBase : DbContext
     {
         /// <summary>
         /// 

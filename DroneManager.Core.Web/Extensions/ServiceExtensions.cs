@@ -8,11 +8,11 @@ namespace DroneManager.Core.Web.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void AddWebServices(this WebApplicationBuilder builder)
+        public static void AddWebServices(this IServiceCollection services)
         {
-            builder.Services.AddSwaggerService();
-            builder.Services.AddControllerService();
-            builder.Services.AddApiVersioningService();
+            services.AddSwaggerService();
+            services.AddControllerService();
+            services.AddApiVersioningService();
         }
 
         /// <summary>

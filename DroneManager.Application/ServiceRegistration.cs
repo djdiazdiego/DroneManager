@@ -18,23 +18,23 @@ namespace DroneManager.Application
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void AddApplicationLayerServices(this WebApplicationBuilder builder)
+        public static void AddApplicationLayerServices(this IServiceCollection services)
         {
             var applicationAssembly = Assembly.Load("DroneManager.Application");
 
-            builder.Services.AddValidatorsFromAssembly(applicationAssembly);
+            services.AddValidatorsFromAssembly(applicationAssembly);
 
-            builder.Services.AddMediatR(config =>
+            services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssemblies(applicationAssembly);
                 config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             });
 
-            builder.Services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<DbContextWrite>());
+            services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<DbContextWrite>());
 
-            builder.Services.AddAutoMapper(LoadMapperAssemblies());
+            services.AddAutoMapper(LoadMapperAssemblies());
 
-            builder.Services.AddProjectServices();
+            services.AddProjectServices();
         }
 
         private static void AddProjectServices(this IServiceCollection services)
