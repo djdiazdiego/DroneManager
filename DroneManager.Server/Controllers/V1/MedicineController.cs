@@ -62,7 +62,7 @@ namespace DroneManager.Server.Controllers.V1
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(typeof(Response<MedicineFileDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<MedicineDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromForm] MedicineFileDTO dto, CancellationToken cancellationToken)
         {
@@ -72,23 +72,23 @@ namespace DroneManager.Server.Controllers.V1
         }
 
         /// <summary>
-        /// Update Drone
+        /// Update Medicine
         /// </summary>
         /// <param name="dto"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPut]
-        [ProducesResponseType(typeof(Response<DroneDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<MedicineDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Put([FromBody] DroneDTO dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Put([FromForm] MedicineFileDTO dto, CancellationToken cancellationToken)
         {
-            var command = _mapper.Map<DroneUpdateCommand>(dto);
+            var command = _mapper.Map<MedicineUpdateCommand>(dto);
             var result = await _mediator.Send(command, cancellationToken);
             return Ok(result);
         }
 
         /// <summary>
-        /// Delete Drone
+        /// Delete Medicine
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>

@@ -21,6 +21,7 @@ namespace DroneManager.Infrastructure.Configurations
             builder.HasOne(p => p.StorageFileData)
                 .WithOne()
                 .HasForeignKey(typeof(Medicine), nameof(Medicine.StorageFileDataId))
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

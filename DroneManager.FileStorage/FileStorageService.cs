@@ -54,7 +54,7 @@ public class FileStorageService : IFileStorageService
         }
         catch (Exception)
         {
-            await DeleteFile(key, cancellationToken);
+            await DeleteFile($"{key}.{extension}", cancellationToken);
 
             throw;
         }
