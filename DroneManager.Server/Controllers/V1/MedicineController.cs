@@ -94,11 +94,11 @@ namespace DroneManager.Server.Controllers.V1
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpDelete, Route("id")]
-        [ProducesResponseType(typeof(Response<DroneDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<MedicineDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Put(int id, CancellationToken cancellationToken)
         {
-            var command = new DroneDeleteCommand { Id = id };
+            var command = new MedicineDeleteCommand { Id = id };
             var result = await _mediator.Send(command, cancellationToken);
             return Ok(result);
         }
